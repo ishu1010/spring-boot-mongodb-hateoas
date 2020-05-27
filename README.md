@@ -7,8 +7,8 @@ https://www.mongodb.com/download-center/community
 
 2. create direcoty structure "C:\data\db", if already there then can ignore this.
 
-3. now set envrionment variable mongodb
-for me i have addres variable name:MongoDB, variable value: C:\Program Files\MongoDB\Server\4.2\bin and added the same at path variable like this %MongoDB%.
+3. now set environment variable mongodb.
+For me i have added variable name:MongoDB, variable value: C:\Program Files\MongoDB\Server\4.2\bin and added the same at path variable like this %MongoDB%.
 
 4. now open command promt  and type command mongod
 C:\Users\ishu1010>mongod
