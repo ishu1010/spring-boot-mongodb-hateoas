@@ -1,12 +1,14 @@
 package com.example.spring.mongo.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.example.spring.mongo.dto.BookDTO;
 import com.example.spring.mongo.model.Book;
 import com.example.spring.mongo.repository.BookRepository;
+import com.example.spring.mongo.utils.BookMapper;
 
 @Service
 public class BookService {
@@ -18,28 +20,26 @@ public class BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	//GET BY ID
-	public Optional<Book> getBook(Integer id) {
-		return bookRepository.findById(id);
-	}
-	//GET ALL RECORD
-	public List<Book> getAllBooks() {
-		return bookRepository.findAll();
+	public List<BookDTO> getAllResource() {
+		List<Book> books = bookRepository.findAll();
+		return BookMapper.bookToBookDtoMapperList(books);
 	}
 
-	//SAVE
-	public Book saveBook(Book book) {
-		return bookRepository.save(book);
+	@Transactional
+	public BookDTO createResource(BookDTO bookDTO) {
+		Book book = bookRepository.save(BookMapper.bookDtoToBookMapper(bookDTO));
+		return BookMapper.bookToBookDtoMapper(book);
+
 	}
 
-	//UPDATE
-	public Book updateBook(Book book) {
-		return saveBook(book);
+	@Transactional
+	public BookDTO updateResource(BookDTO bookDTO) {
+		return createResource(bookDTO);
 	}
-	
-	//DELETE
-		public void deleteBook(Book book) {
-			 bookRepository.delete(book);
-		}
+
+	@Transactional
+	public void deleteResource(BookDTO bookDTO) {
+		bookRepository.delete(BookMapper.bookDtoToBookMapper(bookDTO));
+	}
 
 }
