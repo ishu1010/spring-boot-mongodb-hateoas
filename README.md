@@ -21,3 +21,10 @@ Now mongo database is ready to hanle all the request.
 try checkout this application on you laptop/desktop and run and share feedback.
 
 
+# Jacoco code coverage 
+Pom has configuration for code coverage plugin Jacoco.
+
+#junit test case
+Demo controller class test cases using Mockmvc.
+
+
