@@ -50,7 +50,7 @@ public class BookStoreController {
 	@DeleteMapping(path = "/delete-resource")
 	public ResponseEntity<String> deleteBook(@RequestBody BookDTO bookDTO) {
 		bookService.deleteResource(bookDTO);
-		return ResponseEntity.status(HttpStatus.OK).body("book deleted!!");
+		return ResponseEntity.status(HttpStatus.OK).body("book deleted!");
 	}
 
 }

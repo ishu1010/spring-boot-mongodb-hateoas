@@ -50,4 +50,9 @@ public class BookDTO {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "BookDTO [id=" + id + ", name=" + name + ", author=" + author + ", price=" + price + "]";
+	}
+
 }
