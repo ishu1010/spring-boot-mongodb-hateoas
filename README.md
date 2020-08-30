@@ -1,5 +1,6 @@
-# spring-boot-mongodb
-demo project for mongodb  with spring boot
+# spring-boot-mongodb  HATEOAS (Hypermedia As The Engine Of Application State)
+demo project for HATEOAS with mongo database  with spring boot
+HATEOAS is an extra level upon REST and is used to present information about a REST API to a client
 
 #Mongo database setup steps :
 1. download community server and install it
@@ -11,7 +12,7 @@ https://www.mongodb.com/download-center/community
 For me i have added variable name:MongoDB, variable value: C:\Program Files\MongoDB\Server\4.2\bin and added the same at path variable like this %MongoDB%.
 
 4. now open command promt  and type command mongod
-C:\Users\ishu1010>mongod
+C:\Users\**>mongod
 
 5. now open one more command promt  and type command mongo
 C:\Users\ishu1010>mongo
