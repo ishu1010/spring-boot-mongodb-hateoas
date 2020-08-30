@@ -1,20 +1,17 @@
 package com.example.spring.mongo.service;
 
-import java.nio.file.NotDirectoryException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.spring.mongo.dto.BookDTO;
 import com.example.spring.mongo.model.Book;
 import com.example.spring.mongo.repository.BookRepository;
-import com.example.spring.mongo.utils.BookMapper;
 
 @Service
 public class BookService {
