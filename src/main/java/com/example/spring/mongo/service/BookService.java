@@ -1,7 +1,13 @@
 package com.example.spring.mongo.service;
 
+import java.nio.file.NotDirectoryException;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +20,9 @@ import com.example.spring.mongo.utils.BookMapper;
 public class BookService {
 
 	private BookRepository bookRepository;
+	
+	@Autowired
+	private ModelMapper mapper;
 
 	public BookService(BookRepository bookRepository) {
 		super();
@@ -22,13 +31,13 @@ public class BookService {
 
 	public List<BookDTO> getAllResource() {
 		List<Book> books = bookRepository.findAll();
-		return BookMapper.bookToBookDtoMapperList(books);
+		return books.stream().map(book -> mapper.map(book, BookDTO.class)).collect(Collectors.toList());
 	}
 
 	@Transactional
 	public BookDTO createResource(BookDTO bookDTO) {
-		Book book = bookRepository.save(BookMapper.bookDtoToBookMapper(bookDTO));
-		return BookMapper.bookToBookDtoMapper(book);
+		Book book = bookRepository.save(mapper.map(bookDTO, Book.class));
+		return mapper.map(book, BookDTO.class);
 
 	}
 
@@ -39,7 +48,13 @@ public class BookService {
 
 	@Transactional
 	public void deleteResource(BookDTO bookDTO) {
-		bookRepository.delete(BookMapper.bookDtoToBookMapper(bookDTO));
+		bookRepository.delete(mapper.map(bookDTO, Book.class));
+	}
+
+	public BookDTO getResourceById(int bookId) throws Exception {
+		Optional<Book> bookopt = bookRepository.findById(bookId);
+		if (bookopt.isPresent()) return mapper.map(bookopt.get(), BookDTO.class);
+		throw new Exception("Not found");
 	}
 
 }

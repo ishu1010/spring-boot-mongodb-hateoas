@@ -10,6 +10,10 @@ public class Book {
 	private String name;
 	private String author;
 	private Double price;
+	
+	public Book() {
+		super();
+	}
 
 	public Book(Integer id, String name, String author, Double price) {
 		super();
