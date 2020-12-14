@@ -1,5 +1,5 @@
 # spring-boot-mongodb  HATEOAS (Hypermedia As The Engine Of Application State)
-demo project for HATEOAS with mongo database  with spring boot
+Demo project for HATEOAS with mongo database, spring boot
 HATEOAS is an extra level upon REST and is used to present information about a REST API to a client
 
 #Mongo database setup steps :
